@@ -17,7 +17,8 @@ export default function AdminRegisterForm() {
     setSuccess(false);
     setLoading(true);
     try {
-      const res = await fetch("/api/admin/register", {
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5005";
+      const res = await fetch(`${backendUrl}/api/admin/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
